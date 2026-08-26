@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stacks — Serien, Filme und Bücher im Blick</title>
+<meta name="description" content="Stacks hält fest, welche Folge als Nächstes dran ist, welcher Film noch wartet und auf welcher Seite du stehen geblieben hast. Ohne Konto, ohne Werbung.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/stacks.css">
+<script src="assets/site.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">
+  <span class="l" lang="de">Zum Inhalt springen</span>
+  <span class="l" lang="en">Skip to content</span>
+</a>
+
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="./">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" focusable="false">
+        <rect x="2" y="3" width="18" height="4.5" rx="1.75" fill="var(--series)"></rect>
+        <rect x="2" y="8.75" width="18" height="4.5" rx="1.75" fill="var(--film)"></rect>
+        <rect x="2" y="14.5" width="18" height="4.5" rx="1.75" fill="var(--book)"></rect>
+      </svg>
+      Stacks
+    </a>
+    <nav class="masthead__links">
+      <a href="support/"><span class="l" lang="de">Support</span><span class="l" lang="en">Support</span></a>
+      <a href="privacy-policy/"><span class="l" lang="de">Datenschutz</span><span class="l" lang="en">Privacy</span></a>
+    </nav>
+    <div class="langswitch">
+      <span class="visually-hidden" id="lang-label">Sprache / Language</span>
+      <button type="button" data-set-lang="de" aria-pressed="false" aria-describedby="lang-label">DE</button>
+      <button type="button" data-set-lang="en" aria-pressed="false" aria-describedby="lang-label">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="shell hero__inner">
+      <div>
+        <p class="eyebrow">
+          <span class="l" lang="de"><span class="is-series">Serien</span> · <span class="is-film">Filme</span> · <span class="is-book">Bücher</span></span>
+          <span class="l" lang="en"><span class="is-series">Series</span> · <span class="is-film">Films</span> · <span class="is-book">Books</span></span>
+        </p>
+
+        <h1>
+          <span class="l" lang="de">Du hast mehr angefangen, als du denkst.</span>
+          <span class="l" lang="en">You’ve started more than you remember.</span>
+        </h1>
+
+        <p class="hero__lede">
+          <span class="l" lang="de">Stacks hält fest, welche Folge als Nächstes dran ist, welcher Film noch wartet und auf welcher Seite du stehen geblieben bist. Ein Stapel für alles, was du schaust und liest.</span>
+          <span class="l" lang="en">Stacks keeps track of which episode is next, which film is still waiting, and what page you stopped on. One stack for everything you watch and read.</span>
+        </p>
+
+        <div class="cta">
+          <p class="badge">
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <rect x="1.5" y="1.5" width="13" height="13" rx="3.25" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+              <path d="M5 8h6M8 5v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+            <span class="l" lang="de">Bald im App Store</span>
+            <span class="l" lang="en">Coming to the App Store</span>
+          </p>
+          <p class="cta__note">
+            <span class="l" lang="de">Ohne Konto nutzbar. Ohne Werbung.</span>
+            <span class="l" lang="en">Works without an account. No ads.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Der Stapel: das Datenmodell der App als Bild. Rein illustrativ,
+           deshalb aria-hidden mit Textalternative daneben. -->
+      <div>
+        <p class="visually-hidden">
+          <span class="l" lang="de">Abbildung: ein Stapel aus fünf Einträgen — zwei Serien mit abgehakten Folgen, ein Film auf der Merkliste und zwei Bücher mit Seitenfortschritt.</span>
+          <span class="l" lang="en">Illustration: a stack of five entries — two series with watched episodes, one film on the watchlist, and two books with reading progress.</span>
+        </p>
+
+        <div class="stack" aria-hidden="true">
+          <article class="spine spine--book" style="--i: 0">
+            <span class="spine__kind"><span class="l" lang="de">Buch</span><span class="l" lang="en">Book</span></span>
+            <p class="spine__title">Der Steppenwolf</p>
+            <div class="spine__meta"><span class="progress"><span style="width: 41%"></span></span> 112/274</div>
+          </article>
+
+          <article class="spine spine--series" style="--i: 1">
+            <span class="spine__kind"><span class="l" lang="de">Serie</span><span class="l" lang="en">Series</span></span>
+            <p class="spine__title">Die stille Bucht</p>
+            <div class="spine__meta">
+              <span class="pips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>
+              S2 · 7/10
+            </div>
+          </article>
+
+          <article class="spine spine--film" style="--i: 2">
+            <span class="spine__kind"><span class="l" lang="de">Film</span><span class="l" lang="en">Film</span></span>
+            <p class="spine__title">Metropolis</p>
+            <div class="spine__meta"><span class="dot"></span> <span class="l" lang="de">Merkliste · 153 Min.</span><span class="l" lang="en">Watchlist · 153 min</span></div>
+          </article>
+
+          <article class="spine spine--book" style="--i: 3">
+            <span class="spine__kind"><span class="l" lang="de">Buch</span><span class="l" lang="en">Book</span></span>
+            <p class="spine__title">Die Verwandlung</p>
+            <div class="spine__meta"><span class="progress"><span style="width: 88%"></span></span> 66/75</div>
+          </article>
+
+          <article class="spine spine--series" style="--i: 4">
+            <span class="spine__kind"><span class="l" lang="de">Serie</span><span class="l" lang="en">Series</span></span>
+            <p class="spine__title">Nordlicht</p>
+            <div class="spine__meta">
+              <span class="pips"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span>
+              S1 · 3/8
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <div class="band__head">
+        <h2>
+          <span class="l" lang="de">Drei Arten von Stapel, eine Bibliothek.</span>
+          <span class="l" lang="en">Three kinds of stack, one library.</span>
+        </h2>
+        <p>
+          <span class="l" lang="de">Jeder Medientyp bringt eigene Angaben mit — Stacks zeigt genau die, die zählen.</span>
+          <span class="l" lang="en">Each kind of media carries its own details — Stacks shows the ones that matter.</span>
+        </p>
+      </div>
+
+      <div class="kinds">
+        <div class="kind kind--series">
+          <h3><span class="l" lang="de">Serien</span><span class="l" lang="en">Series</span></h3>
+          <p>
+            <span class="l" lang="de">Folge für Folge abhaken, Staffel für Staffel. Stacks weiß, welche als Nächstes dran ist, und meldet sich, wenn eine neue ausgestrahlt wird.</span>
+            <span class="l" lang="en">Tick off episode by episode, season by season. Stacks knows which one is next and tells you when a new one airs.</span>
+          </p>
+        </div>
+        <div class="kind kind--film">
+          <h3><span class="l" lang="de">Filme</span><span class="l" lang="en">Films</span></h3>
+          <p>
+            <span class="l" lang="de">Auf die Merkliste, wenn du davon hörst. Bewertet und mit Notiz versehen, wenn du ihn gesehen hast.</span>
+            <span class="l" lang="en">Onto the watchlist when you hear about it. Rated and annotated once you’ve seen it.</span>
+          </p>
+        </div>
+        <div class="kind kind--book">
+          <h3><span class="l" lang="de">Bücher</span><span class="l" lang="en">Books</span></h3>
+          <p>
+            <span class="l" lang="de">Barcode auf der Rückseite scannen, fertig. Der Seitenstand bleibt gespeichert, auch wenn Monate dazwischen liegen.</span>
+            <span class="l" lang="en">Scan the barcode on the back and you’re done. Your page number stays put, even months later.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--sunken">
+    <div class="shell">
+      <div class="band__head">
+        <h2>
+          <span class="l" lang="de">Was die App kann</span>
+          <span class="l" lang="en">What the app does</span>
+        </h2>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <h3><span class="l" lang="de">Fortschritt pro Folge</span><span class="l" lang="en">Progress per episode</span></h3>
+          <p>
+            <span class="l" lang="de">Ein Tipp pro Folge. Der Fortschrittsbalken einer Staffel füllt sich mit, und die nächste Folge steht immer obenauf.</span>
+            <span class="l" lang="en">One tap per episode. A season’s progress bar fills as you go, and the next episode always sits on top.</span>
+          </p>
+        </div>
+        <div class="feature">
+          <h3><span class="l" lang="de">Fünf Zustände statt einer Liste</span><span class="l" lang="en">Five states, not one list</span></h3>
+          <p>
+            <span class="l" lang="de">Merkliste, Aktiv, Fertig, Pausiert, Abgebrochen. Pausiert ist kein Scheitern — es ist ein Zustand, aus dem du zurückkommst.</span>
+            <span class="l" lang="en">Watchlist, Active, Finished, Paused, Dropped. Paused isn’t failure — it’s a state you come back from.</span>
+          </p>
+        </div>
+        <div class="feature">
+          <h3><span class="l" lang="de">Barcode-Scanner</span><span class="l" lang="en">Barcode scanner</span></h3>
+          <p>
+            <span class="l" lang="de">ISBN scannen und das Buch steht in der Bibliothek. Die Kamera liest den Code lokal; es wird kein Foto gespeichert.</span>
+            <span class="l" lang="en">Scan an ISBN and the book lands in your library. The camera reads the code on device; no photo is stored.</span>
+          </p>
+        </div>
+        <div class="feature">
+          <h3><span class="l" lang="de">Kalender kommender Folgen</span><span class="l" lang="en">Calendar of upcoming episodes</span></h3>
+          <p>
+            <span class="l" lang="de">Alle Ausstrahlungstermine deiner aktiven Serien an einem Ort — mit optionaler Benachrichtigung am Tag der Folge.</span>
+            <span class="l" lang="en">Every air date from your active series in one place — with an optional reminder on the day.</span>
+          </p>
+        </div>
+        <div class="feature">
+          <h3><span class="l" lang="de">Tags und Sammlungen</span><span class="l" lang="en">Tags and collections</span></h3>
+          <p>
+            <span class="l" lang="de">Ordne nach deinen eigenen Begriffen: „mit Anna schauen“, „Urlaubslektüre“, „nochmal ansehen“.</span>
+            <span class="l" lang="en">Organise by your own words: “watch with Anna”, “holiday reading”, “worth a rewatch”.</span>
+          </p>
+        </div>
+        <div class="feature">
+          <h3><span class="l" lang="de">Streaks und Statistiken</span><span class="l" lang="en">Streaks and statistics</span></h3>
+          <p>
+            <span class="l" lang="de">Wie viele Folgen dieses Jahr, welche Bücher zuletzt, wie lang die aktuelle Serie an aktiven Tagen ist.</span>
+            <span class="l" lang="en">How many episodes this year, which books lately, how long your current run of active days is.</span>
+          </p>
+        </div>
+      </div>
+
+      <p class="also">
+        <span class="l" lang="de"><strong>Außerdem:</strong> Bewertungen und Notizen · smarte Listen für Top-bewertet, Unvollendet und zuletzt Hinzugefügt · Export als JSON oder CSV · automatische Sicherungen · Dark Mode · Deutsch und Englisch · optionale Synchronisierung zwischen deinen Geräten.</span>
+        <span class="l" lang="en"><strong>Also included:</strong> ratings and notes · smart lists for top rated, unfinished and recently added · export as JSON or CSV · automatic backups · dark mode · German and English · optional sync across your devices.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Screenshot-Streifen. Aktivieren, sobald die fuenf Store-Screenshots als
+       assets/shot-1.png ... shot-5.png vorliegen: diesen Kommentar aufloesen und
+       je Rahmen das <span>Screenshot n</span> durch
+       <img src="assets/shot-1.png" alt="..."> ersetzen.
+       Reihenfolge folgt docs/store/store-listing.md.
+   Screenshots: Rahmen sind Platzhalter. Zum Einsetzen das <span> durch
+       <img src="assets/shot-1.png" alt="..."> ersetzen; Reihenfolge folgt
+       docs/store/store-listing.md. 
+  <section class="band">
+    <div class="shell">
+      <div class="band__head">
+        <h2>
+          <span class="l" lang="de">Ein Blick in die App</span>
+          <span class="l" lang="en">A look inside</span>
+        </h2>
+      </div>
+
+      <div class="shots">
+        <figure class="shot">
+          <div class="shot__frame"><span>Screenshot 1</span></div>
+          <figcaption class="shot__caption">
+            <span class="l" lang="de">Start mit aktiven Einträgen</span>
+            <span class="l" lang="en">Home with active entries</span>
+          </figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot__frame"><span>Screenshot 2</span></div>
+          <figcaption class="shot__caption">
+            <span class="l" lang="de">Serien-Fortschritt im Detail</span>
+            <span class="l" lang="en">Series progress in detail</span>
+          </figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot__frame"><span>Screenshot 3</span></div>
+          <figcaption class="shot__caption">
+            <span class="l" lang="de">Suche über TMDB und Google Books</span>
+            <span class="l" lang="en">Search across TMDB and Google Books</span>
+          </figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot__frame"><span>Screenshot 4</span></div>
+          <figcaption class="shot__caption">
+            <span class="l" lang="de">Profil mit Statistiken</span>
+            <span class="l" lang="en">Profile with statistics</span>
+          </figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot__frame"><span>Screenshot 5</span></div>
+          <figcaption class="shot__caption">
+            <span class="l" lang="de">Dark Mode</span>
+            <span class="l" lang="en">Dark mode</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <section class="band band--sunken">
+    <div class="shell trust">
+      <div class="trust__lead">
+        <h2>
+          <span class="l" lang="de">Deine Bibliothek gehört dir.</span>
+          <span class="l" lang="en">Your library is yours.</span>
+        </h2>
+        <p>
+          <span class="l" lang="de">Stacks ist ohne Anmeldung vollständig nutzbar. Ein Konto brauchst du nur, wenn du zwischen Geräten synchronisieren willst.</span>
+          <span class="l" lang="en">Stacks works fully without signing in. You only need an account if you want to sync across devices.</span>
+        </p>
+      </div>
+      <ul>
+        <li class="l" lang="de">Im Gastmodus bleiben alle Einträge lokal auf dem Gerät.</li>
+        <li class="l" lang="en">In guest mode every entry stays local on your device.</li>
+        <li class="l" lang="de">Keine Werbung, kein Tracking, kein Weiterverkauf von Daten.</li>
+        <li class="l" lang="en">No ads, no tracking, no selling of data.</li>
+        <li class="l" lang="de">Export als JSON oder CSV, jederzeit und vollständig.</li>
+        <li class="l" lang="en">Export as JSON or CSV, any time, in full.</li>
+        <li class="l" lang="de">Konto löschen geht direkt in der App und entfernt alles dauerhaft.</li>
+        <li class="l" lang="en">Deleting your account happens in the app and removes everything permanently.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="shell colophon__inner">
+    <div>
+      <small>
+        <span class="l" lang="de">Stacks — eine App zum Verfolgen von Serien, Filmen und Büchern. Kontakt: <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a></span>
+        <span class="l" lang="en">Stacks — an app for tracking series, films and books. Contact: <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a></span>
+      </small>
+      <small>
+        <span class="l" lang="de">Titeldaten von <a href="https://www.themoviedb.org">TMDB</a> und <a href="https://books.google.com">Google Books</a>. Dieses Produkt wird von TMDB weder unterstützt noch zertifiziert.</span>
+        <span class="l" lang="en">Title data from <a href="https://www.themoviedb.org">TMDB</a> and <a href="https://books.google.com">Google Books</a>. This product is not endorsed or certified by TMDB.</span>
+      </small>
+    </div>
+    <nav>
+      <a href="support/"><span class="l" lang="de">Support</span><span class="l" lang="en">Support</span></a>
+      <a href="privacy-policy/"><span class="l" lang="de">Datenschutz</span><span class="l" lang="en">Privacy policy</span></a>
+      <a href="mailto:fifon210@googlemail.com"><span class="l" lang="de">Kontakt</span><span class="l" lang="en">Contact</span></a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

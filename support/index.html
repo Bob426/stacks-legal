@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Stacks</title>
+<meta name="description" content="Hilfe rund um Stacks: Kontakt, häufige Fragen zu Konto, Sicherung, Benachrichtigungen und Synchronisierung.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/stacks.css">
+<script src="../assets/site.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">
+  <span class="l" lang="de">Zum Inhalt springen</span>
+  <span class="l" lang="en">Skip to content</span>
+</a>
+
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" focusable="false">
+        <rect x="2" y="3" width="18" height="4.5" rx="1.75" fill="var(--series)"></rect>
+        <rect x="2" y="8.75" width="18" height="4.5" rx="1.75" fill="var(--film)"></rect>
+        <rect x="2" y="14.5" width="18" height="4.5" rx="1.75" fill="var(--book)"></rect>
+      </svg>
+      Stacks
+    </a>
+    <nav class="masthead__links">
+      <a href="./" aria-current="page"><span class="l" lang="de">Support</span><span class="l" lang="en">Support</span></a>
+      <a href="../privacy-policy/"><span class="l" lang="de">Datenschutz</span><span class="l" lang="en">Privacy</span></a>
+    </nav>
+    <div class="langswitch">
+      <span class="visually-hidden" id="lang-label">Sprache / Language</span>
+      <button type="button" data-set-lang="de" aria-pressed="false" aria-describedby="lang-label">DE</button>
+      <button type="button" data-set-lang="en" aria-pressed="false" aria-describedby="lang-label">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="shell shell--prose page-head">
+    <h1><span class="l" lang="de">Support</span><span class="l" lang="en">Support</span></h1>
+    <p>
+      <span class="l" lang="de">Hilfe rund um Stacks — die App zum Verfolgen von Serien, Filmen und Büchern.</span>
+      <span class="l" lang="en">Help with Stacks — the app for tracking series, films and books.</span>
+    </p>
+  </div>
+
+  <div class="shell shell--prose prose">
+
+    <div class="l" lang="de">
+      <div class="contact">
+        <h2>Schreib uns</h2>
+        <a class="mail" href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a>
+        <p>Antwort in der Regel innerhalb weniger Werktage. Damit es schneller geht, gehören in die Nachricht:</p>
+        <ul>
+          <li>Was passiert ist und was du erwartet hättest</li>
+          <li>Die Schritte, mit denen sich das Verhalten wiederholen lässt</li>
+          <li>Gerät und Betriebssystem-Version</li>
+          <li>Die App-Version aus <strong>Profil → App-Version</strong></li>
+        </ul>
+      </div>
+
+      <nav class="jump" aria-label="Häufige Fragen">
+        <h2>Häufige Fragen</h2>
+        <ul>
+          <li><a href="#konto">Brauche ich ein Konto?</a></li>
+          <li><a href="#sicherung">Wie sichere ich meine Bibliothek oder ziehe sie um?</a></li>
+          <li><a href="#loeschen">Wie lösche ich mein Konto?</a></li>
+          <li><a href="#benachrichtigungen">Ich bekomme keine Benachrichtigungen zu neuen Folgen</a></li>
+          <li><a href="#sync">Die Synchronisierung wirkt hängen geblieben</a></li>
+          <li><a href="#titeldaten">Zu einem Titel fehlen Angaben oder sie sind falsch</a></li>
+          <li><a href="#scanner">Der Barcode-Scanner erkennt ein Buch nicht</a></li>
+        </ul>
+      </nav>
+
+      <h2 id="konto">Brauche ich ein Konto?</h2>
+      <p>Nein. Stacks funktioniert vollständig ohne Anmeldung — alle Einträge bleiben dann lokal auf dem Gerät. Ein Konto ist nur nötig, wenn du deine Bibliothek zwischen Geräten synchronisieren möchtest: <strong>Profil → Anmelden für Cloud-Sync</strong>, per E-Mail, Apple oder Google.</p>
+
+      <h2 id="sicherung">Wie sichere ich meine Bibliothek oder ziehe sie auf ein neues Gerät um?</h2>
+      <p>Zwei Wege, beide im Profil:</p>
+      <ul>
+        <li><strong>Profil → Sicherung</strong>: automatische Sicherungen, „Jetzt sichern“ und Wiederherstellen der letzten Sicherung. Beim Wiederherstellen werden die aktuellen Daten ersetzt.</li>
+        <li><strong>Profil → Export / Import</strong>: Bibliothek als JSON oder CSV exportieren und die JSON-Datei auf einem anderen Gerät wieder importieren.</li>
+      </ul>
+      <p>Mit aktivem Konto übernimmt die Cloud-Synchronisierung den Umzug automatisch.</p>
+
+      <h2 id="loeschen">Wie lösche ich mein Konto?</h2>
+      <p><strong>Profil → Konto löschen</strong>. Konto und zugehörige Daten werden dauerhaft gelöscht; das lässt sich nicht rückgängig machen. Wenn du deine Einträge behalten möchtest, exportiere sie vorher über <strong>Profil → Export / Import</strong>.</p>
+
+      <h2 id="benachrichtigungen">Ich bekomme keine Benachrichtigungen zu neuen Folgen</h2>
+      <p>Prüfe beides: <strong>Profil → Benachrichtigungen</strong> in der App und die Freigabe für Stacks in den Systemeinstellungen des Geräts. Benachrichtigungen gibt es für Serien, die als aktiv geführt werden und ein bekanntes Ausstrahlungsdatum haben.</p>
+
+      <h2 id="sync">Die Synchronisierung wirkt hängen geblieben</h2>
+      <p>Der Zeitpunkt der letzten Synchronisierung steht im Profil. Prüfe die Internetverbindung und ob du angemeldet bist; ein Abmelden und erneutes Anmelden stößt die Synchronisierung neu an. Wenn es dann noch klemmt: kurze Mail mit dem Zeitpunkt und dem betroffenen Eintrag.</p>
+
+      <h2 id="titeldaten">Zu einer Serie, einem Film oder einem Buch fehlen Angaben oder sie sind falsch</h2>
+      <p>Die Titeldaten stammen von <a href="https://www.themoviedb.org">The Movie Database (TMDB)</a> und <a href="https://books.google.com">Google Books</a>. Korrekturen an der Quelle wirken sich mit etwas Verzögerung auch in Stacks aus. Schreib uns trotzdem gern — dann prüfen wir, ob es an der Zuordnung in der App liegt.</p>
+
+      <h2 id="scanner">Der Barcode-Scanner erkennt ein Buch nicht</h2>
+      <p>Der Scanner liest ISBN-Barcodes. Bei schlechten Lichtverhältnissen oder beschädigtem Code hilft die Suche über Titel oder Autor. Die Kamera wird ausschließlich lokal zum Lesen des Codes verwendet, es werden keine Fotos gespeichert oder übertragen.</p>
+
+      <h2>Datenschutz</h2>
+      <p>Wie Stacks mit Daten umgeht, steht in der <a href="../privacy-policy/">Datenschutzerklärung</a>.</p>
+    </div>
+
+    <div class="l" lang="en">
+      <div class="contact">
+        <h2>Get in touch</h2>
+        <a class="mail" href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a>
+        <p>Usually answered within a few business days. To speed things up, please include:</p>
+        <ul>
+          <li>What happened and what you expected instead</li>
+          <li>The steps that reproduce the behaviour</li>
+          <li>Your device and OS version</li>
+          <li>The app version shown under <strong>Profile → App version</strong></li>
+        </ul>
+      </div>
+
+      <nav class="jump" aria-label="Frequently asked questions">
+        <h2>Frequently asked questions</h2>
+        <ul>
+          <li><a href="#account">Do I need an account?</a></li>
+          <li><a href="#backup">How do I back up my library or move it to a new device?</a></li>
+          <li><a href="#delete">How do I delete my account?</a></li>
+          <li><a href="#notifications">I’m not getting notifications about new episodes</a></li>
+          <li><a href="#syncing">Syncing looks stuck</a></li>
+          <li><a href="#titles">A title has missing or wrong details</a></li>
+          <li><a href="#scanning">The barcode scanner doesn’t recognise a book</a></li>
+        </ul>
+      </nav>
+
+      <h2 id="account">Do I need an account?</h2>
+      <p>No. Stacks works fully without signing in — every entry then stays local on your device. An account is only needed to sync your library across devices: <strong>Profile → Sign in for Cloud Sync</strong>, using email, Apple or Google.</p>
+
+      <h2 id="backup">How do I back up my library or move it to a new device?</h2>
+      <p>Two ways, both under Profile:</p>
+      <ul>
+        <li><strong>Profile → Backup</strong>: automatic backups, “Back up now”, and restoring the most recent backup. Restoring replaces your current data.</li>
+        <li><strong>Profile → Export / Import</strong>: export your library as JSON or CSV, then import the JSON file on another device.</li>
+      </ul>
+      <p>With an account signed in, cloud sync handles the move for you.</p>
+
+      <h2 id="delete">How do I delete my account?</h2>
+      <p><strong>Profile → Delete account</strong>. The account and its data are removed permanently and this cannot be undone. If you want to keep your entries, export them first under <strong>Profile → Export / Import</strong>.</p>
+
+      <h2 id="notifications">I’m not getting notifications about new episodes</h2>
+      <p>Check both: <strong>Profile → Notifications</strong> in the app, and the permission for Stacks in your device’s system settings. Notifications go out for series marked as active that have a known air date.</p>
+
+      <h2 id="syncing">Syncing looks stuck</h2>
+      <p>The time of the last sync is shown in your profile. Check your internet connection and that you’re signed in; signing out and back in restarts syncing. If it still won’t move, send a short email with the time and the entry affected.</p>
+
+      <h2 id="titles">A series, film or book has missing or wrong details</h2>
+      <p>Title data comes from <a href="https://www.themoviedb.org">The Movie Database (TMDB)</a> and <a href="https://books.google.com">Google Books</a>. Corrections made at the source reach Stacks after a short delay. Write to us anyway — we’ll check whether the app matched the wrong entry.</p>
+
+      <h2 id="scanning">The barcode scanner doesn’t recognise a book</h2>
+      <p>The scanner reads ISBN barcodes. In poor light or with a damaged code, searching by title or author works better. The camera is used only on device to read the code; no photos are stored or transmitted.</p>
+
+      <h2>Privacy</h2>
+      <p>How Stacks handles data is described in the <a href="../privacy-policy/">privacy policy</a>.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="colophon">
+  <div class="shell colophon__inner">
+    <div>
+      <small>
+        <span class="l" lang="de">Stacks — eine App zum Verfolgen von Serien, Filmen und Büchern.</span>
+        <span class="l" lang="en">Stacks — an app for tracking series, films and books.</span>
+      </small>
+    </div>
+    <nav>
+      <a href="../"><span class="l" lang="de">Start</span><span class="l" lang="en">Home</span></a>
+      <a href="../privacy-policy/"><span class="l" lang="de">Datenschutz</span><span class="l" lang="en">Privacy policy</span></a>
+      <a href="mailto:fifon210@googlemail.com"><span class="l" lang="de">Kontakt</span><span class="l" lang="en">Contact</span></a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
