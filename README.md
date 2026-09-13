@@ -1,6 +1,6 @@
 # Stacks — Legal
 
-Public website for the [Stacks](https://github.com/Bob426/watch-list) app.
+Public website for the [Stacks](https://github.com/Bob426/stacks) app.
 
 - [Start](https://bob426.github.io/stacks-legal/)
 - [Privacy Policy](https://bob426.github.io/stacks-legal/privacy-policy/)
