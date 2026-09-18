@@ -448,6 +448,7 @@ html[data-lang="en"] .l[lang="de"] { display: none; }
   display: inline-block; margin-bottom: 0.75rem;
 }
 .contact p:last-child { margin-bottom: 0; }
+.contact .l { display: inline; }
 
 /* ── Fußzeile ──────────────────────────────────────────── */
 
