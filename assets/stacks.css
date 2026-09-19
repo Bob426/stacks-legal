@@ -344,8 +344,10 @@ html[data-lang="en"] .l[lang="de"] { display: none; }
 .tiles {
   list-style: none; margin: 0; padding: 0;
   display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: 1fr;
 }
+@media (min-width: 34rem) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 60rem) { .tiles { grid-template-columns: repeat(4, 1fr); } }
 .tile {
   background: var(--paper-raised);
   border: 1px solid var(--rule);
@@ -380,16 +382,9 @@ html[data-lang="en"] .l[lang="de"] { display: none; }
 }
 
 /* Vertrauensblock */
-.trust { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
-.trust__lead h2 { font-size: clamp(1.625rem, 4vw, 2.25rem); letter-spacing: -0.025em; margin-bottom: 0.75rem; }
-.trust__lead p { color: var(--ink-soft); margin: 0; }
-.trust ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.875rem; }
-.trust li { padding-left: 1.75rem; position: relative; color: var(--ink-soft); }
-.trust li::before {
-  content: ""; position: absolute; left: 0; top: 0.6em;
-  width: 10px; height: 10px; border-radius: 3px;
-  background: var(--indigo);
-}
+.trust > * { max-width: 40rem; }
+.trust h2 { font-size: clamp(1.625rem, 4vw, 2.25rem); letter-spacing: -0.025em; margin-bottom: 0.75rem; }
+.trust p { color: var(--ink-soft); margin: 0; }
 
 /* ── Fließtext (Support, Datenschutz) ──────────────────── */
 
