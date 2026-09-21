@@ -196,6 +196,13 @@ html:not([data-lang]) .langswitch { display: none; }
 html[data-lang="de"] .l[lang="en"] { display: none; }
 html[data-lang="en"] .l[lang="de"] { display: none; }
 
+/* Ausnahme fuer die Screenshots: ohne data-lang stehen zwei Bilder
+   uebereinander im selben Telefonrahmen, der dadurch doppelt so hoch wird
+   (gemessen 569 -> 1120 px). Beim Text ist das Untereinander gewollt, im
+   Rahmen sieht es kaputt aus — dort bleibt ohne JavaScript die deutsche
+   Fassung stehen. */
+html:not([data-lang]) .phone img[lang="en"] { display: none; }
+
 /* ── Hero ──────────────────────────────────────────────── */
 
 .hero { padding-block: clamp(2.5rem, 7vw, 5rem) clamp(3rem, 8vw, 5.5rem); overflow: hidden; }
