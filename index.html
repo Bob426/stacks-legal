@@ -10,6 +10,16 @@
 <link rel="preload" href="assets/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/stacks.css">
 <script src="assets/site.js"></script>
+<script>
+  /* Hero-Screenshots nur in der Sprache vorladen, die site.js gerade gesetzt hat — die
+     Bilder selbst sind lazy, damit die ausgeblendete Sprache gar nicht lädt (228 KB). */
+  ['home', 'library-dark'].forEach(function (name) {
+    var link = document.createElement('link');
+    link.rel = 'preload'; link.as = 'image';
+    link.href = 'assets/shots/' + name + (document.documentElement.lang === 'en' ? '-en' : '') + '.jpg';
+    document.head.appendChild(link);
+  });
+</script>
 </head>
 <body>
 
@@ -60,21 +70,22 @@
           <a class="badge l" lang="de" href="https://apps.apple.com/de/app/stacks-mediatracker/id6795250381">Im App Store laden</a>
           <a class="badge l" lang="en" href="https://apps.apple.com/us/app/stacks-mediatracker/id6795250381">Get it on the App Store</a>
           <p class="cta__note">
-            <span class="l" lang="de">Kostenlos und ohne Werbung.</span>
-            <span class="l" lang="en">Free, no ads.</span>
+            <span class="l" lang="de">Kostenlos fürs iPhone, ohne Werbung.</span>
+            <span class="l" lang="en">Free for iPhone, no ads.</span>
           </p>
         </div>
       </div>
 
+      <!-- lazy + Preload im <head>: siehe dort. -->
       <div class="hero__phones">
         <figure class="phone phone--back">
-          <img class="l" lang="de" src="assets/shots/library-dark.jpg" width="718" height="1560" alt="" loading="eager">
-          <img class="l" lang="en" src="assets/shots/library-dark-en.jpg" width="718" height="1560" alt="" loading="eager">
+          <img class="l" lang="de" src="assets/shots/library-dark.jpg" width="718" height="1560" alt="" loading="lazy">
+          <img class="l" lang="en" src="assets/shots/library-dark-en.jpg" width="718" height="1560" alt="" loading="lazy">
         </figure>
         <figure class="phone phone--front">
-          <img class="l" lang="de" src="assets/shots/home.jpg" width="718" height="1560" loading="eager"
+          <img class="l" lang="de" src="assets/shots/home.jpg" width="718" height="1560" loading="lazy"
                alt="Startbildschirm von Stacks: die aktive Serie mit Fortschrittsbalken und Button für die nächste Folge, darunter ein Buch mit Seitenstand und die kommenden Folgen.">
-          <img class="l" lang="en" src="assets/shots/home-en.jpg" width="718" height="1560" loading="eager"
+          <img class="l" lang="en" src="assets/shots/home-en.jpg" width="718" height="1560" loading="lazy"
                alt="The Stacks home screen: the active series with a progress bar and a button for the next episode, below it a book with its page count and the upcoming episodes.">
         </figure>
       </div>
@@ -194,8 +205,8 @@
         </li>
         <li class="tile">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3M18 3v4h-4M6 21v-4h4"/></svg>
-          <h3><span class="l" lang="de">Auf allen Geräten</span><span class="l" lang="en">On all your devices</span></h3>
-          <p><span class="l" lang="de">Mit Konto überall gleich, ohne Konto nur auf dem Handy.</span><span class="l" lang="en">Synced with an account, on your phone without one.</span></p>
+          <h3><span class="l" lang="de">Auf mehreren iPhones</span><span class="l" lang="en">On more than one iPhone</span></h3>
+          <p><span class="l" lang="de">Mit Konto überall gleich, ohne Konto nur auf diesem.</span><span class="l" lang="en">Synced with an account, on this phone without one.</span></p>
         </li>
       </ul>
     </div>
@@ -217,9 +228,11 @@
   <section class="closer">
     <div class="shell closer__inner">
       <h2>
-        <span class="l" lang="de">Stacks erscheint bald im App Store</span>
-        <span class="l" lang="en">Stacks is coming to the App Store soon</span>
+        <span class="l" lang="de">Stacks gibt es jetzt im App Store</span>
+        <span class="l" lang="en">Stacks is now on the App Store</span>
       </h2>
+      <a class="badge l" lang="de" href="https://apps.apple.com/de/app/stacks-mediatracker/id6795250381">Im App Store laden</a>
+      <a class="badge l" lang="en" href="https://apps.apple.com/us/app/stacks-mediatracker/id6795250381">Get it on the App Store</a>
       <p class="closer__note">
         <span class="l" lang="de">Fragen oder Wünsche? Schreib mir an <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a>.</span>
         <span class="l" lang="en">Questions or ideas? Write to me at <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a>.</span>
@@ -233,8 +246,8 @@
   <div class="shell colophon__inner">
     <div>
       <small>
-        <span class="l" lang="de">Stacks ist eine App zum Verfolgen von Serien, Filmen und Büchern. Kontakt: <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a></span>
-        <span class="l" lang="en">Stacks is an app for tracking series, films and books. Contact: <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a></span>
+        <span class="l" lang="de">Stacks ist eine App zum Verfolgen von Serien, Filmen und Büchern.</span>
+        <span class="l" lang="en">Stacks is an app for tracking series, films and books.</span>
       </small>
       <small>
         <span class="l" lang="de">Titeldaten und Cover von <a href="https://www.themoviedb.org">TMDB</a> und <a href="https://books.google.com">Google Books</a>. Dieses Produkt wird von TMDB weder unterstützt noch zertifiziert.</span>
