@@ -271,6 +271,11 @@ a.badge, a.badge:hover { color: var(--paper); text-decoration: none; }
 /* Ohne JavaScript nur der deutsche Link, wie bei den Screenshots. */
 html:not([data-lang]) .badge[lang="en"] { display: none; }
 a.badge:hover { opacity: 0.88; }
+/* Badge: Apple verlangt ≥ 40 px Höhe und ein Viertel der Höhe Freiraum — 48 px hoch,
+   12 px Rand um die Grafik, kein Hover-Effekt (Veränderungen sind untersagt). */
+.store-badge { display: inline-flex; padding: 0.75rem; margin: -0.75rem; border-radius: 12px; }
+.store-badge img { display: block; height: 3rem; width: auto; }
+html:not([data-lang]) .store-badge[lang="en"] { display: none; }
 .cta__note {
   font-family: var(--display); font-weight: 600; font-size: 0.875rem;
   color: var(--ink-faint); margin: 0;
