@@ -246,7 +246,12 @@ html:not([data-lang]) .phone img[lang="en"] { display: none; }
   padding: 0.75rem 1.25rem; border-radius: 12px;
   box-shadow: var(--shadow-low);
 }
-.badge svg { display: block; opacity: 0.9; }
+/* a:hover would otherwise recolour the pill in the link indigo. */
+a.badge, a.badge:hover { color: var(--paper); text-decoration: none; }
+.badge.l { display: inline-flex; }
+/* Ohne JavaScript nur der deutsche Link, wie bei den Screenshots. */
+html:not([data-lang]) .badge[lang="en"] { display: none; }
+a.badge:hover { opacity: 0.88; }
 .cta__note {
   font-family: var(--display); font-weight: 600; font-size: 0.9375rem;
   color: var(--ink-faint); margin: 0;
