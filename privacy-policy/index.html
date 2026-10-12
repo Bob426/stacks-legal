@@ -83,7 +83,7 @@
         <li><strong>Anmelde-Kennung von Apple</strong> (bei „Mit Apple anmelden“; wir erhalten keine Passwörter)</li>
         <li><strong>Deine Medienliste</strong>: gespeicherte Serien, Filme, Bücher, Bewertungen, Notizen, Tags, Fortschritt und Einstellungen</li>
       </ul>
-      <p>Diese Daten werden bei unserem Auftragsverarbeiter <strong>Supabase</strong> (supabase.com) gespeichert, um sie zwischen deinen Geräten zu synchronisieren. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).</p>
+      <p>Diese Daten werden bei unserem Auftragsverarbeiter <strong>Supabase</strong> (supabase.com, Server in der EU) gespeichert, um sie zwischen deinen Geräten zu synchronisieren. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).</p>
 
       <h3>Push-Benachrichtigungen (optional)</h3>
       <p>Wenn du Benachrichtigungen erlaubst, speichern wir einen Geräte-Push-Token (Expo Push Service), um dich z. B. über neue Folgen zu informieren. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Die Einwilligung ist jederzeit in den Systemeinstellungen widerrufbar.</p>
@@ -91,14 +91,17 @@
       <h3>E-Mails zum Konto</h3>
       <p>Mails wie das Zurücksetzen des Passworts verschicken wir über <strong>Resend</strong> (resend.com, Versand aus der EU-Region Irland). Dabei werden deine E-Mail-Adresse und der Inhalt der Mail übermittelt. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).</p>
       <h3>Absturzberichte</h3>
-      <p>Zur Stabilitätsverbesserung nutzen wir <strong>Sentry</strong> (sentry.io). Bei Fehlern werden technische Daten übermittelt (Gerätemodell, Betriebssystem, App-Version, Fehlerkontext, pseudonyme Nutzer-ID). Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer stabilen App).</p>
+      <p>Zur Stabilitätsverbesserung nutzen wir <strong>Sentry</strong> (sentry.io, Server in der EU). Bei Fehlern werden technische Daten übermittelt (Gerätemodell, Betriebssystem, App-Version, Fehlerkontext, pseudonyme Nutzer-ID). Außerdem sendet die App bei einem Teil der Sitzungen Leistungsdaten (z. B. wie lange ein Bildschirm zum Laden braucht), auch ohne Fehler. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer stabilen App).</p>
 
       <h3>Mediendatenbanken</h3>
-      <p>Für die Suche nach Serien, Filmen und Büchern werden Anfragen über unseren Server an <strong>The Movie Database (TMDB)</strong> und <strong>Google Books</strong> weitergeleitet. Dabei wird dein Suchbegriff übermittelt, jedoch keine Kontodaten.</p>
+      <p>Für die Suche nach Serien, Filmen und Büchern werden Anfragen über unseren Server an <strong>The Movie Database (TMDB)</strong> und <strong>Google Books</strong> weitergeleitet. Dabei wird dein Suchbegriff übermittelt, jedoch keine Kontodaten. Poster und Buchcover lädt die App direkt von den Servern von TMDB und Google; dabei erhalten diese – technisch bedingt – deine IP-Adresse. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer funktionierenden Mediensuche).</p>
       <p>Ist Google Books nicht erreichbar, fragt die App bei der Buchsuche direkt bei <strong>Open Library</strong> (openlibrary.org, betrieben vom Internet Archive, USA) an und lädt von dort Buchcover. Dabei werden dein Suchbegriff bzw. die ISBN und – technisch bedingt – deine IP-Adresse übermittelt, jedoch keine Kontodaten. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer funktionierenden Buchsuche).</p>
 
       <h3>Kamera (optional)</h3>
       <p>Die Kamera wird ausschließlich lokal zum Scannen von Buch-Barcodes (ISBN) verwendet. Es werden keine Fotos gespeichert oder übertragen.</p>
+
+      <h3>App-Updates</h3>
+      <p>Beim Start fragt die App bei <strong>Expo</strong> (650 Industries, Inc., USA) nach Fehlerbehebungen, die ohne App-Store-Update eingespielt werden. Dabei werden deine IP-Adresse, App-Version, Plattform und eine zufällige Installationskennung übermittelt, jedoch keine Kontodaten. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer fehlerfreien App).</p>
 
       <h3>Diese Website</h3>
       <p>Diese Website wird über <strong>GitHub Pages</strong> (GitHub, Inc., USA) ausgeliefert. Beim Aufruf verarbeitet GitHub technisch notwendige Daten wie deine IP-Adresse, Datum und Uhrzeit sowie die aufgerufene Seite, um sie auszuliefern und vor Missbrauch zu schützen; die IP-Adresse wird dabei zu Sicherheitszwecken gespeichert. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren, erreichbaren Website).</p>
@@ -106,6 +109,7 @@
 
       <h2 id="de-3">3. Speicherdauer</h2>
       <p>Kontodaten und Medienliste bleiben gespeichert, bis du dein Konto löschst. Die Löschung ist direkt in der App möglich (<strong>Profil → Konto löschen</strong>) und entfernt dein Konto sowie alle zugehörigen Daten dauerhaft und unwiderruflich von unseren Servern.</p>
+      <p>Den Push-Token löschen wir, sobald du dich abmeldest oder dein Konto löschst. Absturzberichte und Leistungsdaten löscht Sentry automatisch nach spätestens 90 Tagen.</p>
 
       <h2 id="de-4">4. Deine Rechte (DSGVO)</h2>
       <p>Du hast das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21). Deine Daten kannst du jederzeit in der App als JSON exportieren (<strong>Profil → Export</strong>). Außerdem hast du das Recht auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde.</p>
@@ -115,8 +119,8 @@
         <li><strong>Supabase Inc.</strong> — Datenbank &amp; Authentifizierung</li>
         <li><strong>Resend, Inc.</strong> — Versand von Konto-E-Mails</li>
         <li><strong>Functional Software, Inc. (Sentry)</strong> — Absturzberichte</li>
-        <li><strong>Expo (650 Industries, Inc.)</strong> — Push-Benachrichtigungen</li>
-        <li><strong>TMDB / Google Books</strong> — Mediensuche (nur Suchanfragen)</li>
+        <li><strong>Expo (650 Industries, Inc.)</strong> — Push-Benachrichtigungen und App-Updates</li>
+        <li><strong>TMDB / Google Books</strong> — Mediensuche (Suchanfragen; beim Laden von Bildern die IP-Adresse)</li>
         <li><strong>Internet Archive (Open Library)</strong> — Buchsuche als Ausweichlösung (Suchanfrage, IP-Adresse)</li>
         <li><strong>GitHub, Inc.</strong> — Hosting dieser Website</li>
       </ul>
@@ -157,7 +161,7 @@
         <li><strong>Sign-in identifier from Apple</strong> (for “Sign in with Apple”; we never receive passwords)</li>
         <li><strong>Your media list</strong>: saved series, films, books, ratings, notes, tags, progress and settings</li>
       </ul>
-      <p>This data is stored with our processor <strong>Supabase</strong> (supabase.com) in order to sync it across your devices. Legal basis: Art. 6(1)(b) GDPR (performance of a contract).</p>
+      <p>This data is stored with our processor <strong>Supabase</strong> (supabase.com, servers in the EU) in order to sync it across your devices. Legal basis: Art. 6(1)(b) GDPR (performance of a contract).</p>
 
       <h3>Push notifications (optional)</h3>
       <p>If you allow notifications, we store a device push token (Expo Push Service) so we can tell you about new episodes, for example. Legal basis: Art. 6(1)(a) GDPR (consent). You can withdraw consent at any time in your system settings.</p>
@@ -165,14 +169,17 @@
       <h3>Account emails</h3>
       <p>Emails such as password resets are sent via <strong>Resend</strong> (resend.com, sent from the EU region Ireland). Your email address and the content of the email are transmitted. Legal basis: Art. 6(1)(b) GDPR (performance of a contract).</p>
       <h3>Crash reports</h3>
-      <p>To improve stability we use <strong>Sentry</strong> (sentry.io). When an error occurs, technical data is transmitted (device model, operating system, app version, error context, pseudonymous user ID). Legal basis: Art. 6(1)(f) GDPR (legitimate interest in a stable app).</p>
+      <p>To improve stability we use <strong>Sentry</strong> (sentry.io, servers in the EU). When an error occurs, technical data is transmitted (device model, operating system, app version, error context, pseudonymous user ID). The app also sends performance data (e.g. how long a screen takes to load) for a sample of sessions, even when no error occurs. Legal basis: Art. 6(1)(f) GDPR (legitimate interest in a stable app).</p>
 
       <h3>Media databases</h3>
-      <p>To search for series, films and books, requests are forwarded through our server to <strong>The Movie Database (TMDB)</strong> and <strong>Google Books</strong>. Your search term is transmitted; no account data is.</p>
+      <p>To search for series, films and books, requests are forwarded through our server to <strong>The Movie Database (TMDB)</strong> and <strong>Google Books</strong>. Your search term is transmitted; no account data is. The app loads posters and book covers directly from TMDB’s and Google’s servers, which therefore receive your IP address for technical reasons. Legal basis: Art. 6(1)(f) GDPR (legitimate interest in a working media search).</p>
       <p>If Google Books is unavailable, the app sends book searches directly to <strong>Open Library</strong> (openlibrary.org, run by the Internet Archive, USA) and loads book covers from there. Your search term or ISBN and, for technical reasons, your IP address are transmitted; no account data is. Legal basis: Art. 6(1)(f) GDPR (legitimate interest in a working book search).</p>
 
       <h3>Camera (optional)</h3>
       <p>The camera is used only on device, to scan book barcodes (ISBN). No photos are stored or transmitted.</p>
+
+      <h3>App updates</h3>
+      <p>On launch, the app asks <strong>Expo</strong> (650 Industries, Inc., USA) for fixes that are delivered without an App Store update. Your IP address, app version, platform and a random installation identifier are transmitted; no account data is. Legal basis: Art. 6(1)(f) GDPR (legitimate interest in a bug-free app).</p>
 
       <h3>This website</h3>
       <p>This website is served by <strong>GitHub Pages</strong> (GitHub, Inc., USA). When you visit it, GitHub processes technically necessary data such as your IP address, date and time and the page requested, in order to deliver it and protect it from abuse; the IP address is stored for security purposes. Legal basis: Art. 6(1)(f) GDPR (legitimate interest in a secure, reachable website).</p>
@@ -180,6 +187,7 @@
 
       <h2 id="en-3">3. Retention</h2>
       <p>Account data and your media list are kept until you delete your account. Deletion is available directly in the app (<strong>Profile → Delete account</strong>) and removes your account and all associated data permanently and irreversibly from our servers.</p>
+      <p>We delete the push token as soon as you sign out or delete your account. Sentry deletes crash reports and performance data automatically after 90 days at most.</p>
 
       <h2 id="en-4">4. Your rights (GDPR)</h2>
       <p>You have the right of access (Art. 15), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20) and objection (Art. 21). You can export your data as JSON in the app at any time (<strong>Profile → Export</strong>). You also have the right to lodge a complaint with a data protection supervisory authority.</p>
@@ -189,8 +197,8 @@
         <li><strong>Supabase Inc.</strong> — database &amp; authentication</li>
         <li><strong>Resend, Inc.</strong> — sending account emails</li>
         <li><strong>Functional Software, Inc. (Sentry)</strong> — crash reports</li>
-        <li><strong>Expo (650 Industries, Inc.)</strong> — push notifications</li>
-        <li><strong>TMDB / Google Books</strong> — media search (search queries only)</li>
+        <li><strong>Expo (650 Industries, Inc.)</strong> — push notifications and app updates</li>
+        <li><strong>TMDB / Google Books</strong> — media search (search queries; your IP address when images load)</li>
         <li><strong>Internet Archive (Open Library)</strong> — fallback book search (search query, IP address)</li>
         <li><strong>GitHub, Inc.</strong> — hosting of this website</li>
       </ul>
