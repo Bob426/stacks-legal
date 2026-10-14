@@ -304,6 +304,14 @@ html:not([data-lang]) .store-badge[lang="en"] { display: none; }
 }
 /* Ohne JavaScript nur die deutsche Fassung, wie bei den Screenshots. */
 html:not([data-lang]) .promo__video[lang="en"] { display: none; }
+/* Die Breakpoints blenden nur aus, nie ein — so bleiben die Sprachregeln oben unangetastet. */
+.promo__video--v {
+  aspect-ratio: 9 / 16;
+  width: min(100%, calc(80svh * 9 / 16));
+  margin-inline: auto;
+}
+@media (max-width: 40rem) { .promo__video--h { display: none; } }
+@media (min-width: 40.0625rem) { .promo__video--v { display: none; } }
 
 /* ── Telefone ──────────────────────────────────────────── */
 

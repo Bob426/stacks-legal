@@ -103,16 +103,28 @@
         </h2>
       </div>
       <!-- Kein Autoplay: der Film hat Ton, und Bewegung soll niemand ungefragt bekommen.
-           preload="none" lädt nur das Poster; der Film (2 MB) erst beim Abspielen. -->
-      <video class="promo__video l" lang="de" controls playsinline preload="none" width="1920" height="1080"
+           preload="none" lädt nur das Poster; der Film (2 MB) erst beim Abspielen.
+           Je Sprache eine Quer- und eine Hochkant-Fassung: quer auf 390 px war die
+           Schrift im Film 6–9 px hoch. Ausgeblendete Videos laden nichts. -->
+      <video class="promo__video promo__video--h l" lang="de" controls playsinline preload="none" width="1920" height="1080"
              poster="assets/video/stacks-de.jpg"
              aria-label="Kurzfilm, 20 Sekunden: Stacks merkt sich die nächste Folge einer Serie, die Seite im Buch und die Sterne für einen Film. Ohne Werbung, ohne Tracking, kostenlos fürs iPhone.">
         <source src="assets/video/stacks-de.mp4" type="video/mp4">
       </video>
-      <video class="promo__video l" lang="en" controls playsinline preload="none" width="1920" height="1080"
+      <video class="promo__video promo__video--h l" lang="en" controls playsinline preload="none" width="1920" height="1080"
              poster="assets/video/stacks-en.jpg"
              aria-label="Short film, 20 seconds: Stacks remembers a series' next episode, your page in a book and the stars for a film. No ads, no tracking, free for iPhone.">
         <source src="assets/video/stacks-en.mp4" type="video/mp4">
+      </video>
+      <video class="promo__video promo__video--v l" lang="de" controls playsinline preload="none" width="1080" height="1920"
+             poster="assets/video/stacks-v-de.jpg"
+             aria-label="Kurzfilm, 20 Sekunden: Stacks merkt sich die nächste Folge einer Serie, die Seite im Buch und die Sterne für einen Film. Ohne Werbung, ohne Tracking, kostenlos fürs iPhone.">
+        <source src="assets/video/stacks-v-de.mp4" type="video/mp4">
+      </video>
+      <video class="promo__video promo__video--v l" lang="en" controls playsinline preload="none" width="1080" height="1920"
+             poster="assets/video/stacks-v-en.jpg"
+             aria-label="Short film, 20 seconds: Stacks remembers a series' next episode, your page in a book and the stars for a film. No ads, no tracking, free for iPhone.">
+        <source src="assets/video/stacks-v-en.mp4" type="video/mp4">
       </video>
     </div>
   </section>
