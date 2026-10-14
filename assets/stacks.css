@@ -294,6 +294,17 @@ html:not([data-lang]) .store-badge[lang="en"] { display: none; }
 }
 .band__head p { color: var(--ink-soft); margin: 0; }
 
+/* ── Video ───────────────────────────────────────────── */
+
+.promo__video {
+  width: 100%; height: auto; aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  background: var(--paper-sunken);
+  box-shadow: var(--shadow-mid);
+}
+/* Ohne JavaScript nur die deutsche Fassung, wie bei den Screenshots. */
+html:not([data-lang]) .promo__video[lang="en"] { display: none; }
+
 /* ── Telefone ──────────────────────────────────────────── */
 
 /* Die Screenshots bringen Statusleiste und Dynamic Island selbst mit; der
