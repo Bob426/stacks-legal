@@ -23,12 +23,24 @@
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].setAttribute('aria-pressed', String(buttons[i].dataset.setLang === lang));
     }
+    /* Das Kontaktformular schickt die Sprache mit, damit die Rückmeldung passt. */
+    var formLang = document.querySelector('.contact-form input[name="lang"]');
+    if (formLang) formLang.value = lang;
+  }
+
+  /* Rückmeldung nach dem Absenden des Kontaktformulars (?status=…). */
+  function showFormStatus() {
+    var match = /[?&]status=([a-z-]+)/.exec(window.location.search);
+    if (!match) return;
+    var box = document.querySelector('.form-status[data-status="' + match[1] + '"]');
+    if (box) box.hidden = false;
   }
 
   apply(read());
 
   document.addEventListener('DOMContentLoaded', function () {
     apply(root.getAttribute('data-lang'));
+    showFormStatus();
 
     document.addEventListener('click', function (event) {
       var button = event.target.closest('[data-set-lang]');

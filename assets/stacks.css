@@ -404,7 +404,8 @@ html:not([data-lang]) .promo__video[lang="en"] { display: none; }
   grid-template-columns: 1fr;
 }
 @media (min-width: 34rem) { .tiles { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 60rem) { .tiles { grid-template-columns: repeat(4, 1fr); } }
+/* Drei statt vier: sechs Kacheln ergeben zwei volle Reihen statt 4 + 2. */
+@media (min-width: 60rem) { .tiles { grid-template-columns: repeat(3, 1fr); } }
 /* Kein Rahmen: --paper-raised hebt sich schon vom --paper-sunken des Bands ab. */
 .tile {
   background: var(--paper-raised);
@@ -486,6 +487,7 @@ html:not([data-lang]) .promo__video[lang="en"] { display: none; }
   padding: 1rem 1.5rem; margin: 0 0 2rem;
 }
 .callout p { margin: 0; font-size: 0.875rem; }
+.callout--notice p { font-size: inherit; }
 .linkish {
   appearance: none; background: none; border: 0; padding: 0;
   font: inherit; color: var(--indigo-deep); cursor: pointer;
@@ -504,6 +506,29 @@ html:not([data-lang]) .promo__video[lang="en"] { display: none; }
 }
 .contact p:last-child { margin-bottom: 0; }
 .contact .l { display: inline; }
+
+/* ── Kontaktformular ───────────────────────────────────── */
+
+.contact-form { display: grid; gap: 0.5rem; }
+.contact-form label { font-family: var(--display); font-weight: 600; font-size: 0.9375rem; color: var(--ink); margin-top: 0.75rem; }
+.contact-form input, .contact-form textarea {
+  font: inherit; color: var(--ink); background: var(--paper-raised);
+  border: 1px solid var(--rule-strong); border-radius: 8px;
+  padding: 0.75rem; width: 100%; box-sizing: border-box;
+}
+.contact-form textarea { resize: vertical; min-height: 10rem; }
+.contact-form input:focus-visible, .contact-form textarea:focus-visible { outline: 2px solid var(--indigo); outline-offset: 1px; }
+.contact-form__trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.contact-form__note { font-size: 0.875rem; margin: 1rem 0 0.5rem !important; }
+.contact-form button {
+  justify-self: start; font-family: var(--display); font-weight: 700; font-size: 1rem;
+  color: var(--on-indigo); background: var(--indigo-deep); border: 0; border-radius: 10px;
+  padding: 0.75rem 1.5rem; cursor: pointer;
+}
+.contact-form button:hover { background: var(--indigo); }
+.form-status { background: var(--indigo-wash); border-left: 3px solid var(--indigo); border-radius: 0 8px 8px 0; padding: 1rem 1.5rem; margin: 0 0 2rem; }
+.form-status--error { border-left-color: var(--film); }
+.form-status p { margin: 0 !important; color: var(--ink) !important; }
 
 /* ── Fußzeile ──────────────────────────────────────────── */
 

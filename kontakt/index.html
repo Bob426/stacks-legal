@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt — Stacks</title>
+<meta name="description" content="Kontaktformular für Fragen, Fehlerberichte und Anliegen rund um die App Stacks.">
+<link rel="icon" href="../assets/icon-180.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="stylesheet" href="../assets/stacks.css">
+<script src="../assets/site.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">
+  <span class="l" lang="de">Zum Inhalt springen</span>
+  <span class="l" lang="en">Skip to content</span>
+</a>
+
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="../">
+      <img src="../assets/icon-180.png" width="26" height="26" alt="">
+      Stacks
+    </a>
+    <nav class="masthead__links">
+      <a href="../support/"><span class="l" lang="de">Support</span><span class="l" lang="en">Support</span></a>
+      <a href="../privacy-policy/"><span class="l" lang="de">Datenschutz</span><span class="l" lang="en">Privacy</span></a>
+    </nav>
+    <div class="langswitch">
+      <span class="visually-hidden" id="lang-label">Sprache / Language</span>
+      <button type="button" data-set-lang="de" aria-pressed="false" aria-describedby="lang-label">DE</button>
+      <button type="button" data-set-lang="en" aria-pressed="false" aria-describedby="lang-label">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="shell shell--prose page-head">
+    <h1><span class="l" lang="de">Kontakt</span><span class="l" lang="en">Contact</span></h1>
+    <p>
+      <span class="l" lang="de">Fragen, Fehler oder Anliegen zu Stacks — schreib mir hier oder per E-Mail an <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a>.</span>
+      <span class="l" lang="en">Questions, bugs or requests about Stacks — write to me here or by email to <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a>.</span>
+    </p>
+  </div>
+
+  <div class="shell shell--prose prose">
+    <div class="form-status" data-status="sent" role="status" hidden>
+      <p><span class="l" lang="de">Danke, deine Nachricht ist angekommen. Ich antworte in der Regel innerhalb weniger Werktage.</span><span class="l" lang="en">Thanks, your message has arrived. I usually reply within a few working days.</span></p>
+    </div>
+    <div class="form-status form-status--error" data-status="email" role="alert" hidden>
+      <p><span class="l" lang="de">Bitte gib eine gültige E-Mail-Adresse an, damit ich antworten kann.</span><span class="l" lang="en">Please enter a valid email address so I can reply.</span></p>
+    </div>
+    <div class="form-status form-status--error" data-status="message" role="alert" hidden>
+      <p><span class="l" lang="de">Die Nachricht ist zu kurz — schreib bitte ein paar Worte mehr.</span><span class="l" lang="en">The message is too short — please write a few more words.</span></p>
+    </div>
+    <div class="form-status form-status--error" data-status="too-long" role="alert" hidden>
+      <p><span class="l" lang="de">Ein Feld ist zu lang. Die Nachricht darf höchstens 5000 Zeichen haben.</span><span class="l" lang="en">A field is too long. The message may have at most 5,000 characters.</span></p>
+    </div>
+    <div class="form-status form-status--error" data-status="failed" role="alert" hidden>
+      <p><span class="l" lang="de">Die Nachricht konnte gerade nicht verschickt werden. Bitte versuch es später noch einmal oder schreib per E-Mail.</span><span class="l" lang="en">The message could not be sent just now. Please try again later or write by email.</span></p>
+    </div>
+
+    <form class="contact-form" id="formular" method="post" action="https://wnvxlxsnkctjnrxqmcts.supabase.co/functions/v1/contact">
+      <input type="hidden" name="lang" value="de">
+
+      <label for="cf-name"><span class="l" lang="de">Name (optional)</span><span class="l" lang="en">Name (optional)</span></label>
+      <input id="cf-name" name="name" type="text" maxlength="100" autocomplete="name">
+
+      <label for="cf-email"><span class="l" lang="de">E-Mail-Adresse</span><span class="l" lang="en">Email address</span></label>
+      <input id="cf-email" name="email" type="email" maxlength="254" autocomplete="email" required>
+
+      <label for="cf-message"><span class="l" lang="de">Nachricht</span><span class="l" lang="en">Message</span></label>
+      <textarea id="cf-message" name="message" rows="7" minlength="10" maxlength="5000" required></textarea>
+
+      <!-- Für Menschen unsichtbar; wer es ausfüllt, ist ein Bot. -->
+      <div class="contact-form__trap" aria-hidden="true">
+        <label for="cf-website">Website</label>
+        <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <p class="contact-form__note">
+        <span class="l" lang="de">Deine Angaben verwende ich nur, um deine Anfrage zu beantworten. Mehr dazu in der <a href="../privacy-policy/#de-2">Datenschutzerklärung</a>.</span>
+        <span class="l" lang="en">I only use your details to answer your request. More in the <a href="../privacy-policy/#en-2">privacy policy</a>.</span>
+      </p>
+
+      <button type="submit"><span class="l" lang="de">Nachricht senden</span><span class="l" lang="en">Send message</span></button>
+    </form>
+  </div>
+</main>
+
+<footer class="colophon">
+  <div class="shell colophon__inner">
+    <div>
+      <small>
+        <span class="l" lang="de">Stacks ist eine App zum Verfolgen von Serien, Filmen und Büchern.</span>
+        <span class="l" lang="en">Stacks is an app for tracking series, films and books.</span>
+      </small>
+    </div>
+    <nav>
+      <a href="../"><span class="l" lang="de">Start</span><span class="l" lang="en">Home</span></a>
+      <a href="../privacy-policy/"><span class="l" lang="de">Datenschutz</span><span class="l" lang="en">Privacy policy</span></a>
+      <a href="./" aria-current="page"><span class="l" lang="de">Kontakt</span><span class="l" lang="en">Contact</span></a>
+      <a href="../privacy-policy/#impressum"><span class="l" lang="de">Impressum</span><span class="l" lang="en">Legal notice</span></a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
