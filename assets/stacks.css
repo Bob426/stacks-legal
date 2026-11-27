@@ -440,10 +440,210 @@ html:not([data-lang]) .promo__video[lang="en"] { display: none; }
   @keyframes rise { from { opacity: 0; translate: 0 24px; } to { opacity: 1; translate: 0 0; } }
 }
 
-/* Vertrauensblock */
-.trust > * { max-width: 40rem; }
-.trust h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); letter-spacing: -0.025em; margin-bottom: 0.75rem; }
-.trust p { color: var(--ink-soft); margin: 0; }
+/* ── Hero: Umschalter Serien / Filme / Bücher ─────────── */
+
+/* Ohne JavaScript bleibt die alte Eyebrow mit home.jpg stehen; site.js setzt
+   data-tabs, sobald der Umschalter funktioniert. */
+.media-tabs, .hero__caption, .phone--front img[data-tab] { display: none; }
+html[data-tabs] .media-tabs { display: flex; }
+html[data-tabs] .hero__caption { display: block; }
+html[data-tabs] .hero__copy > .eyebrow, html[data-tabs] .phone--front img[data-home] { display: none; }
+/* Nur das aktive Bild in der aktiven Sprache. */
+html[data-tabs][data-lang="de"] .phone--front img[data-tab][lang="de"].is-active,
+html[data-tabs][data-lang="en"] .phone--front img[data-tab][lang="en"].is-active { display: block; }
+
+.media-tabs { flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.5rem; }
+.media-tabs button {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  min-height: 2.75rem; padding: 0 1rem; border-radius: 999px;
+  border: 1px solid var(--rule-strong); background: transparent; cursor: pointer;
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint);
+}
+.media-tabs button::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--dot);
+}
+.media-tabs button:hover { color: var(--ink); }
+.media-tabs button[aria-selected="true"] {
+  background: var(--paper-raised); border-color: var(--dot); color: var(--tab-ink);
+  box-shadow: var(--shadow-low);
+}
+.media-tabs .l { display: inline; }
+.media-tabs [data-kind="series"] { --dot: var(--series); --tab-ink: var(--series-ink); }
+.media-tabs [data-kind="film"]   { --dot: var(--film);   --tab-ink: var(--film-ink); }
+.media-tabs [data-kind="book"]   { --dot: var(--book);   --tab-ink: var(--book-ink); }
+
+/* 4rem statt der 1,5rem aus dem Entwurf: das hintere Telefon ragt durch translate/rotate
+   gut 3rem unter das vordere und verdeckte die Bildunterschrift (gemessen bei 390 und 1280 px). */
+.hero__caption {
+  grid-area: 2 / 1; margin: 4rem 0 0; text-align: center;
+  font-family: var(--mono); font-size: 0.75rem; color: var(--ink-faint); letter-spacing: 0.04em;
+}
+.hero__caption span { display: none; }
+html[data-lang="de"] .hero__caption span[lang="de"].is-active,
+html[data-lang="en"] .hero__caption span[lang="en"].is-active { display: inline; }
+
+/* QR-Karte: nur, wo man nicht schon am iPhone ist. */
+.qr-card {
+  display: none; align-items: center; gap: 1rem;
+  margin-top: 2rem; padding: 1rem; max-width: 24rem;
+  background: var(--paper-raised); border-radius: 16px; box-shadow: var(--shadow-low);
+}
+@media (min-width: 40.0625rem) { .qr-card { display: flex; } }
+.qr-card a { flex: 0 0 auto; border-radius: 8px; }
+html:not([data-lang]) .qr-card a[lang="en"] { display: none; }
+.qr-card img { display: block; width: 6rem; height: 6rem; border-radius: 8px; }
+.qr-card__title { margin: 0; font-family: var(--display); font-weight: 700; font-size: 1rem; color: var(--ink); }
+.qr-card__text { margin: 0.25rem 0 0; font-size: 0.875rem; color: var(--ink-soft); }
+
+.byline { margin: 2rem 0 0; font-size: 0.875rem; color: var(--ink-soft); max-width: 26rem; }
+.byline strong { color: var(--ink); font-weight: 600; }
+
+/* ── „Deine Sammlung gehört dir“: Haarlinien-Raster ───── */
+
+.facts {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 1px; background: var(--rule);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  border: 1px solid var(--rule); border-radius: 16px; overflow: hidden;
+}
+.facts li { background: var(--paper-raised); padding: 1.5rem; }
+.facts h3 { font-size: 1.125rem; margin-bottom: 0.25rem; }
+.facts p:not(.kicker) { margin: 0; font-size: 0.875rem; color: var(--ink-soft); }
+.kicker--soft { --kicker: var(--ink-soft); }
+.kicker--series { --kicker: var(--series-ink); }
+.kicker--film { --kicker: var(--film-ink); }
+.kicker--book { --kicker: var(--book-ink); }
+.band__foot { margin: 1.5rem 0 0; font-size: 0.875rem; color: var(--ink-faint); }
+
+/* ── Aufklappbare Fragen (Startseite, Support) ─────────── */
+
+.faq { border-top: 1px solid var(--rule); }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  min-height: 3.5rem; padding-block: 0.75rem; cursor: pointer; list-style: none;
+  font-family: var(--display); font-weight: 700; font-size: 1.125rem; line-height: 1.35; color: var(--ink);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--mono); font-size: 1.25rem; color: var(--indigo-deep); }
+.faq details[open] > summary::after { content: "–"; }
+.faq details > p, .faq details li { color: var(--ink-soft); }
+.faq details > p { margin: 0 0 1.5rem; }
+.faq details > ul { margin: -0.75rem 0 1.5rem; }
+.faq details > p:has(+ .path) { margin-bottom: 0.75rem; }
+
+/* .prose setzt h2 als Abschnittstrenner; die Gruppentitel im Support sind kleiner. */
+.prose .faq-group__title {
+  font-size: 0.75rem; font-family: var(--mono); font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
+  margin: 2.5rem 0 0.75rem; padding-top: 0; border-top: 0;
+}
+.prose p.path {
+  display: inline-flex; padding: 0.25rem 0.75rem; border-radius: 8px;
+  background: var(--indigo-wash); color: var(--ink);
+  font-family: var(--display); font-weight: 700; font-size: 0.875rem;
+}
+
+/* Suchfeld im Support. Ohne JavaScript bleibt es per hidden-Attribut weg. */
+.search {
+  display: flex; align-items: center; gap: 0.75rem;
+  min-height: 3.25rem; padding: 0 1rem; margin-top: 2rem;
+  background: var(--paper-raised); border: 1px solid var(--rule-strong); border-radius: 12px;
+}
+.search[hidden], [data-faq-group][hidden], .faq details[hidden] { display: none; }
+.search:focus-within { outline: 2px solid var(--indigo); outline-offset: 1px; }
+.search svg { flex: 0 0 auto; width: 20px; height: 20px; fill: none; stroke: var(--ink-faint); stroke-width: 1.75; stroke-linecap: round; }
+.search input {
+  flex: 1; min-width: 0; border: 0; background: transparent; outline: 0;
+  font: inherit; color: var(--ink); min-height: 3rem;
+}
+.search-empty { margin-top: 1.5rem; }
+
+/* Kontakt am Ende des Supports */
+.contact--end { margin-top: 3rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+.button {
+  display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.5rem;
+  border-radius: 10px; font-family: var(--display); font-weight: 700; font-size: 1rem;
+  text-decoration: none; cursor: pointer;
+}
+a.button--primary, .button--primary { background: var(--indigo-deep); color: var(--on-indigo); border: 0; }
+a.button--primary:hover, .button--primary:hover { background: var(--indigo); color: var(--on-indigo); }
+a.button--secondary, .button--secondary { background: transparent; color: var(--ink); border: 1px solid var(--rule-strong); }
+a.button--secondary:hover, .button--secondary:hover { color: var(--ink); border-color: var(--ink-faint); }
+.contact .actions .l { display: inline-flex; }
+
+/* ── Datenschutz: Kurzfassung, Inhaltsverzeichnis neben dem Text ── */
+
+.summary { padding: clamp(1.25rem, 3vw, 2rem); margin: 2rem 0 3rem; }
+/* Fest 2 × 2 statt auto-fit mit 14rem aus dem Entwurf: das ergab drei Zellen plus eine
+   einzelne in der zweiten Reihe. Auf dem Telefon eine Spalte. */
+.prose .summary .facts { grid-template-columns: 1fr; margin: 1rem 0 0; padding: 0; }
+@media (min-width: 40.0625rem) { .prose .summary .facts { grid-template-columns: repeat(2, 1fr); } }
+.prose .summary .facts li { padding: 1rem; margin: 0; }
+.summary__label { display: block; font-family: var(--mono); font-size: 0.75rem; color: var(--ink-faint); margin-bottom: 0.25rem; }
+.summary .facts p { margin: 0; color: var(--ink); font-size: 1rem; }
+.prose .summary__foot { margin: 1rem 0 0; font-size: 0.875rem; color: var(--ink-faint); }
+
+@media (min-width: 62rem) {
+  .shell--policy { width: min(65rem, 100%); }
+  .policy { display: grid; grid-template-columns: 14rem minmax(0, 42rem); gap: 3rem; align-items: start; }
+  .policy > .jump {
+    position: sticky; top: 5rem; margin: 0; padding: 0; background: none; border: 0; border-radius: 0;
+    max-height: calc(100vh - 6rem); overflow-y: auto;
+  }
+  .policy > .jump a {
+    min-height: 2.25rem; padding: 0.25rem 0 0.25rem 0.75rem; border-left: 2px solid var(--rule);
+    color: var(--ink-soft); gap: 0.5rem; align-items: baseline; line-height: 1.35;
+  }
+  .policy > .jump a[aria-current="true"] { border-left-color: var(--indigo); color: var(--ink); }
+  .policy__body > h2:first-child { margin-top: 0; }
+}
+.jump .num { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-faint); min-width: 1.25rem; }
+.impressum { margin-top: 4rem; }
+/* Sprungziele nicht unter der klebenden Kopfzeile (4rem) verstecken. */
+.prose [id] { scroll-margin-top: 5rem; }
+
+/* ── Kontakt: Anliegen, Prüfung am Feld, Erfolg ohne Seitenwechsel ── */
+
+.topics { border: 0; padding: 0; margin: 0.75rem 0 0; min-width: 0; }
+.topics legend { font-family: var(--display); font-weight: 600; font-size: 0.9375rem; color: var(--ink); padding: 0; margin-bottom: 0.5rem; }
+.topics__row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.topics label { margin: 0 !important; position: relative; }
+.topics input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.topics span.pill {
+  display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1rem;
+  border-radius: 999px; border: 1px solid var(--rule-strong); background: var(--paper-raised);
+  font-family: var(--display); font-weight: 700; font-size: 1rem; color: var(--ink);
+}
+.topics input:checked + span.pill { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.topics input:focus-visible + span.pill { outline: 2px solid var(--indigo); outline-offset: 3px; }
+.topics .l { display: inline; }
+
+.bug-only[hidden] { display: none; }
+.bug-hint { background: var(--indigo-wash); border-radius: 12px; padding: 1rem 1.5rem; margin-top: 0.75rem; font-size: 0.875rem; }
+.bug-hint p, .bug-hint li { color: var(--ink) !important; font-size: 0.875rem; }
+.bug-hint p { margin: 0 0 0.5rem !important; }
+.bug-hint ul { margin: 0 !important; }
+.bug-hint li { margin-bottom: 0.25rem; }
+.contact-form input.app-version { max-width: 12rem; }
+
+.label-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-top: 0.75rem; }
+.label-row label { margin-top: 0 !important; }
+.counter { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-faint); }
+.field-error { margin: 0 !important; font-size: 0.875rem; color: var(--film-ink) !important; }
+.field-error[hidden] { display: none; }
+.contact-form [aria-invalid="true"] { border-color: var(--film); }
+.contact-form button[disabled] { opacity: 0.6; cursor: progress; }
+
+.sent { padding: 2rem; }
+.sent[hidden] { display: none; }
+.sent h2 { font-size: 1.5rem !important; }
+.sent .l { display: inline; }
+
+/* Schlussnotiz der Startseite: schmaler als die Spalte des Abschlusses. */
+.closer__note { max-width: 34rem; }
 
 /* ── Fließtext (Support, Datenschutz) ──────────────────── */
 

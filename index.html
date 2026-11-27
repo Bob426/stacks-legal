@@ -12,8 +12,9 @@
 <script src="assets/site.js"></script>
 <script>
   /* Hero-Screenshots nur in der Sprache vorladen, die site.js gerade gesetzt hat — die
-     Bilder selbst sind lazy, damit die ausgeblendete Sprache gar nicht lädt (228 KB). */
-  ['home', 'library-dark'].forEach(function (name) {
+     Bilder selbst sind lazy, damit die ausgeblendete Sprache gar nicht lädt (228 KB).
+     Mit JavaScript zeigt der Umschalter zuerst Serien; home.jpg ist nur der Fallback ohne JS. */
+  ['series', 'library-dark'].forEach(function (name) {
     var link = document.createElement('link');
     link.rel = 'preload'; link.as = 'image';
     link.href = 'assets/shots/' + name + (document.documentElement.lang === 'en' ? '-en' : '') + '.jpg';
@@ -51,6 +52,11 @@
   <section class="hero">
     <div class="shell hero__inner">
       <div class="hero__copy">
+        <div class="media-tabs" role="tablist" aria-label="Medientyp">
+          <button type="button" role="tab" id="tab-series" data-kind="series" aria-selected="true" aria-controls="hero-phones"><span class="l" lang="de">Serien</span><span class="l" lang="en">Series</span></button>
+          <button type="button" role="tab" id="tab-film" data-kind="film" aria-selected="false" aria-controls="hero-phones" tabindex="-1"><span class="l" lang="de">Filme</span><span class="l" lang="en">Films</span></button>
+          <button type="button" role="tab" id="tab-book" data-kind="book" aria-selected="false" aria-controls="hero-phones" tabindex="-1"><span class="l" lang="de">Bücher</span><span class="l" lang="en">Books</span></button>
+        </div>
         <p class="eyebrow">
           <span class="l" lang="de"><span class="is-series">Serien</span> · <span class="is-film">Filme</span> · <span class="is-book">Bücher</span></span>
           <span class="l" lang="en"><span class="is-series">Series</span> · <span class="is-film">Films</span> · <span class="is-book">Books</span></span>
@@ -76,20 +82,52 @@
             <span class="l" lang="en">Free for iPhone, no ads.</span>
           </p>
         </div>
+
+        <div class="qr-card">
+          <a class="l" lang="de" href="https://apps.apple.com/de/app/stacks-mediatracker/id6795250381"><img src="assets/qr-de.svg" width="96" height="96" alt="QR-Code zum App Store" loading="lazy"></a>
+          <a class="l" lang="en" href="https://apps.apple.com/us/app/stacks-mediatracker/id6795250381"><img src="assets/qr-en.svg" width="96" height="96" alt="QR code for the App Store" loading="lazy"></a>
+          <div>
+            <p class="qr-card__title"><span class="l" lang="de">Gerade am Computer?</span><span class="l" lang="en">On a computer?</span></p>
+            <p class="qr-card__text"><span class="l" lang="de">Mit der iPhone-Kamera scannen, und Stacks öffnet sich direkt im App Store.</span><span class="l" lang="en">Scan with your iPhone camera to open Stacks in the App Store.</span></p>
+          </div>
+        </div>
+
+        <!-- Bewusst ohne Foto (Wunsch des Autors). -->
+        <p class="byline">
+          <span class="l" lang="de"><strong>Gebaut von Bobby in Reutlingen.</strong> Eine Person, keine Investoren, kein Geschäft mit deinen Daten.</span>
+          <span class="l" lang="en"><strong>Built by Bobby in Reutlingen, Germany.</strong> One person, no investors, no business with your data.</span>
+        </p>
       </div>
 
       <!-- lazy + Preload im <head>: siehe dort. -->
-      <div class="hero__phones">
+      <div class="hero__phones" id="hero-phones" role="tabpanel" aria-labelledby="tab-series">
         <figure class="phone phone--back">
           <img class="l" lang="de" src="assets/shots/library-dark.jpg" width="718" height="1560" alt="" loading="lazy">
           <img class="l" lang="en" src="assets/shots/library-dark-en.jpg" width="718" height="1560" alt="" loading="lazy">
         </figure>
         <figure class="phone phone--front">
-          <img class="l" lang="de" src="assets/shots/home.jpg" width="718" height="1560" loading="lazy"
+          <img class="l" lang="de" data-home src="assets/shots/home.jpg" width="718" height="1560" loading="lazy"
                alt="Startbildschirm von Stacks: die aktive Serie mit Fortschrittsbalken und dem Button „S4 E3 gesehen“, darunter eine weitere Serie, ein Buch mit Seitenstand und der Schnellzugriff auf Listen.">
-          <img class="l" lang="en" src="assets/shots/home-en.jpg" width="718" height="1560" loading="lazy"
+          <img class="l" lang="en" data-home src="assets/shots/home-en.jpg" width="718" height="1560" loading="lazy"
                alt="The Stacks home screen: the active series with a progress bar and the “Watched S4 E3” button, below it another series, a book with its page and quick access to lists.">
+          <img class="l is-active" lang="de" data-tab="series" src="assets/shots/series.jpg" width="718" height="1560" loading="lazy"
+               alt="Detailansicht der Serie Severance: Status Aktiv, 79 Prozent gesehen, Staffel 2 Folge 7 als Nächstes, mit dem Button „S2 E7 gesehen“.">
+          <img class="l is-active" lang="en" data-tab="series" src="assets/shots/series-en.jpg" width="718" height="1560" loading="lazy"
+               alt="Detail view of the series Severance: status Active, 79 percent watched, season 2 episode 7 up next, with the “Watched S2 E7” button.">
+          <img class="l" lang="de" data-tab="film" src="assets/shots/movie-dark.jpg" width="718" height="1560" loading="lazy"
+               alt="Detailansicht des Films Dune: Part Two im Dark Mode, mit fünf Sternen bewertet und als Fertig markiert.">
+          <img class="l" lang="en" data-tab="film" src="assets/shots/movie-dark-en.jpg" width="718" height="1560" loading="lazy"
+               alt="Detail view of the film Dune: Part Two in dark mode, rated five stars and marked as finished.">
+          <img class="l" lang="de" data-tab="book" src="assets/shots/book.jpg" width="718" height="1560" loading="lazy"
+               alt="Detailansicht des Buchs Der Hobbit: Seite 212 von 444, 48 Prozent gelesen.">
+          <img class="l" lang="en" data-tab="book" src="assets/shots/book-en.jpg" width="718" height="1560" loading="lazy"
+               alt="Detail view of the book The Hobbit: page 212 of 329, 64 percent read.">
         </figure>
+        <p class="hero__caption" aria-live="polite">
+          <span class="is-active" lang="de" data-tab="series">Severance · S2 E7 als Nächstes</span><span class="is-active" lang="en" data-tab="series">Severance · S2 E7 up next</span>
+          <span lang="de" data-tab="film">Dune: Part Two · fünf Sterne</span><span lang="en" data-tab="film">Dune: Part Two · five stars</span>
+          <span lang="de" data-tab="book">Der Hobbit · Seite 212 von 444</span><span lang="en" data-tab="book">The Hobbit · page 212 of 329</span>
+        </p>
       </div>
     </div>
   </section>
@@ -108,22 +146,22 @@
            Schrift im Film 6–9 px hoch. Ausgeblendete Videos laden nichts. -->
       <video class="promo__video promo__video--h l" lang="de" controls playsinline preload="none" width="1920" height="1080"
              poster="assets/video/stacks-de.jpg"
-             aria-label="Kurzfilm, 20 Sekunden: Stacks merkt sich die nächste Folge einer Serie, die Seite im Buch und die Sterne für einen Film. Ohne Werbung, ohne Tracking, kostenlos fürs iPhone.">
+             aria-label="Kurzfilm, 20 Sekunden: Stacks merkt sich die nächste Folge einer Serie, die Seite im Buch und die Sterne für einen Film. Ohne Werbung, ohne Nutzerprofil, kostenlos fürs iPhone.">
         <source src="assets/video/stacks-de.mp4" type="video/mp4">
       </video>
       <video class="promo__video promo__video--h l" lang="en" controls playsinline preload="none" width="1920" height="1080"
              poster="assets/video/stacks-en.jpg"
-             aria-label="Short film, 20 seconds: Stacks remembers a series' next episode, your page in a book and the stars for a film. No ads, no tracking, free for iPhone.">
+             aria-label="Short film, 20 seconds: Stacks remembers a series' next episode, your page in a book and the stars for a film. No ads, no user profile, free for iPhone.">
         <source src="assets/video/stacks-en.mp4" type="video/mp4">
       </video>
       <video class="promo__video promo__video--v l" lang="de" controls playsinline preload="none" width="1080" height="1920"
              poster="assets/video/stacks-v-de.jpg"
-             aria-label="Kurzfilm, 20 Sekunden: Stacks merkt sich die nächste Folge einer Serie, die Seite im Buch und die Sterne für einen Film. Ohne Werbung, ohne Tracking, kostenlos fürs iPhone.">
+             aria-label="Kurzfilm, 20 Sekunden: Stacks merkt sich die nächste Folge einer Serie, die Seite im Buch und die Sterne für einen Film. Ohne Werbung, ohne Nutzerprofil, kostenlos fürs iPhone.">
         <source src="assets/video/stacks-v-de.mp4" type="video/mp4">
       </video>
       <video class="promo__video promo__video--v l" lang="en" controls playsinline preload="none" width="1080" height="1920"
              poster="assets/video/stacks-v-en.jpg"
-             aria-label="Short film, 20 seconds: Stacks remembers a series' next episode, your page in a book and the stars for a film. No ads, no tracking, free for iPhone.">
+             aria-label="Short film, 20 seconds: Stacks remembers a series' next episode, your page in a book and the stars for a film. No ads, no user profile, free for iPhone.">
         <source src="assets/video/stacks-v-en.mp4" type="video/mp4">
       </video>
     </div>
@@ -260,14 +298,85 @@
   </section>
 
   <section class="band">
-    <div class="shell trust">
-      <h2>
-        <span class="l" lang="de">Ohne Werbung. Ohne Tracking.</span>
-        <span class="l" lang="en">No ads. No tracking.</span>
-      </h2>
-      <p>
-        <span class="l" lang="de">Ein Konto brauchst du nicht. Deine Sammlung gehört dir, und du kannst sie jederzeit exportieren oder löschen. Mehr dazu in der <a href="privacy-policy/">Datenschutzerklärung</a>.</span>
-        <span class="l" lang="en">You don’t need an account. Your library is yours, and you can export or delete it any time. More in the <a href="privacy-policy/">privacy policy</a>.</span>
+    <div class="shell">
+      <div class="band__head">
+        <h2>
+          <span class="l" lang="de">Deine Sammlung gehört dir</span>
+          <span class="l" lang="en">Your library is yours</span>
+        </h2>
+        <p>
+          <span class="l" lang="de">Was Stacks mit deinen Daten macht, in vier Sätzen.</span>
+          <span class="l" lang="en">What Stacks does with your data, in four sentences.</span>
+        </p>
+      </div>
+      <ul class="facts">
+        <li>
+          <p class="kicker kicker--series"><span class="l" lang="de">Kein Konto</span><span class="l" lang="en">No account</span></p>
+          <h3><span class="l" lang="de">Funktioniert ohne Anmeldung</span><span class="l" lang="en">Works without signing in</span></h3>
+          <p><span class="l" lang="de">Ohne Konto bleibt alles lokal auf deinem iPhone.</span><span class="l" lang="en">Without an account, everything stays on your iPhone.</span></p>
+        </li>
+        <li>
+          <p class="kicker kicker--film"><span class="l" lang="de">Keine Werbung</span><span class="l" lang="en">No ads</span></p>
+          <h3><span class="l" lang="de">Keine Anzeigen, keine Werbe-ID</span><span class="l" lang="en">No ads, no advertising ID</span></h3>
+          <p><span class="l" lang="de">Stacks greift weder auf Werbe-IDs noch auf Standort oder Kontakte zu.</span><span class="l" lang="en">Stacks doesn’t access advertising IDs, your location or your contacts.</span></p>
+        </li>
+        <li>
+          <p class="kicker kicker--book"><span class="l" lang="de">Export</span><span class="l" lang="en">Export</span></p>
+          <h3><span class="l" lang="de">Jederzeit mitnehmen</span><span class="l" lang="en">Take it with you</span></h3>
+          <p><span class="l" lang="de">Export als JSON oder CSV, Konto mit einem Tipp löschen.</span><span class="l" lang="en">Export as JSON or CSV, delete your account with one tap.</span></p>
+        </li>
+        <li>
+          <p class="kicker kicker--soft"><span class="l" lang="de">Statistik</span><span class="l" lang="en">Statistics</span></p>
+          <h3><span class="l" lang="de">Anonym, in der EU</span><span class="l" lang="en">Anonymous, in the EU</span></h3>
+          <p><span class="l" lang="de">Welche Bildschirme genutzt werden – ohne Titel, ohne dauerhafte Kennung.</span><span class="l" lang="en">Which screens get used – no titles, no lasting identifier.</span></p>
+        </li>
+      </ul>
+      <p class="band__foot">
+        <span class="l" lang="de">Alle Details in der <a href="privacy-policy/">Datenschutzerklärung</a>.</span>
+        <span class="l" lang="en">All the details are in the <a href="privacy-policy/">privacy policy</a>.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell shell--prose">
+      <div class="band__head">
+        <h2>
+          <span class="l" lang="de">Häufige Fragen</span>
+          <span class="l" lang="en">Common questions</span>
+        </h2>
+      </div>
+      <div class="l faq" lang="de">
+        <details>
+          <summary>Brauche ich ein Konto?</summary>
+          <p>Nein. Stacks funktioniert vollständig ohne Anmeldung – alle Einträge bleiben dann lokal auf dem Gerät. Ein Konto ist nur nötig, wenn du deine Bibliothek zwischen Geräten synchronisieren möchtest.</p>
+        </details>
+        <details>
+          <summary>Kann ich meine Daten aus einer anderen App mitnehmen?</summary>
+          <p>Ja. Stacks importiert Exporte aus Letterboxd, Goodreads, Trakt und TV Time – Serien kommen mit allen gesehenen Folgen.</p>
+        </details>
+        <details>
+          <summary>Was kostet Stacks?</summary>
+          <p>Nichts. Stacks ist kostenlos fürs iPhone und zeigt keine Werbung.</p>
+        </details>
+      </div>
+      <div class="l faq" lang="en">
+        <details>
+          <summary>Do I need an account?</summary>
+          <p>No. Stacks works fully without signing in – every entry then stays on your device. You only need an account to sync your library across devices.</p>
+        </details>
+        <details>
+          <summary>Can I bring my data from another app?</summary>
+          <p>Yes. Stacks imports exports from Letterboxd, Goodreads, Trakt and TV Time – shows come in with every episode you watched.</p>
+        </details>
+        <details>
+          <summary>What does Stacks cost?</summary>
+          <p>Nothing. Stacks is free for iPhone and shows no ads.</p>
+        </details>
+      </div>
+      <p class="band__foot">
+        <span class="l" lang="de">Mehr Antworten im <a href="support/">Support</a>.</span>
+        <span class="l" lang="en">More answers in <a href="support/">Support</a>.</span>
       </p>
     </div>
   </section>
@@ -281,8 +390,8 @@
       <a class="badge l" lang="de" href="https://apps.apple.com/de/app/stacks-mediatracker/id6795250381">Im App Store laden</a>
       <a class="badge l" lang="en" href="https://apps.apple.com/us/app/stacks-mediatracker/id6795250381">Get it on the App Store</a>
       <p class="closer__note">
-        <span class="l" lang="de">Fragen oder Wünsche? Schreib mir an <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a>.</span>
-        <span class="l" lang="en">Questions or ideas? Write to me at <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a>.</span>
+        <span class="l" lang="de">Ich lese jede Nachricht selbst. Fragen, Fehler oder Wünsche an <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a> oder übers <a href="kontakt/">Kontaktformular</a>. – Bobby</span>
+        <span class="l" lang="en">I read every message myself. Questions, bugs or ideas to <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a> or via the <a href="kontakt/">contact form</a>. – Bobby</span>
       </p>
     </div>
   </section>

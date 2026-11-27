@@ -39,8 +39,8 @@
   <div class="shell shell--prose page-head">
     <h1><span class="l" lang="de">Kontakt</span><span class="l" lang="en">Contact</span></h1>
     <p>
-      <span class="l" lang="de">Fragen, Fehler oder Anliegen zu Stacks — schreib mir hier oder per E-Mail an <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a>.</span>
-      <span class="l" lang="en">Questions, bugs or requests about Stacks — write to me here or by email to <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a>.</span>
+      <span class="l" lang="de">Antwort in der Regel innerhalb weniger Werktage. Lieber per Mail? <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a></span>
+      <span class="l" lang="en">Usually answered within a few business days. Prefer email? <a href="mailto:fifon210@googlemail.com">fifon210@googlemail.com</a></span>
     </p>
   </div>
 
@@ -64,14 +64,45 @@
     <form class="contact-form" id="formular" method="post" action="https://wnvxlxsnkctjnrxqmcts.supabase.co/functions/v1/contact">
       <input type="hidden" name="lang" value="de">
 
+      <fieldset class="topics">
+        <legend><span class="l" lang="de">Worum geht’s?</span><span class="l" lang="en">What’s it about?</span></legend>
+        <div class="topics__row">
+          <label><input type="radio" name="topic" value="bug"><span class="pill"><span class="l" lang="de">Fehler melden</span><span class="l" lang="en">Report a bug</span></span></label>
+          <label><input type="radio" name="topic" value="question" checked><span class="pill"><span class="l" lang="de">Frage</span><span class="l" lang="en">Question</span></span></label>
+          <label><input type="radio" name="topic" value="idea"><span class="pill"><span class="l" lang="de">Idee</span><span class="l" lang="en">Idea</span></span></label>
+        </div>
+      </fieldset>
+
+      <!-- Ohne JavaScript bleibt das hidden-Attribut stehen; site.js blendet ein, sobald "Fehler melden" gewählt ist. -->
+      <div class="bug-hint bug-only" hidden>
+        <p><span class="l" lang="de">Damit ich den Fehler schnell finde:</span><span class="l" lang="en">To help me find the bug quickly:</span></p>
+        <ul class="l" lang="de">
+          <li>Was passiert ist und was du erwartet hättest</li>
+          <li>Die Schritte, mit denen sich das Verhalten wiederholen lässt</li>
+          <li>Gerät und Betriebssystem-Version</li>
+        </ul>
+        <ul class="l" lang="en">
+          <li>What happened and what you expected instead</li>
+          <li>The steps that reproduce the behaviour</li>
+          <li>Your device and OS version</li>
+        </ul>
+      </div>
+      <label class="bug-only" for="cf-version" hidden><span class="l" lang="de">App-Version (Profil → App-Version)</span><span class="l" lang="en">App version (Profile → App version)</span></label>
+      <input class="bug-only app-version" id="cf-version" name="app_version" type="text" maxlength="40" autocomplete="off" hidden>
+
       <label for="cf-name"><span class="l" lang="de">Name (optional)</span><span class="l" lang="en">Name (optional)</span></label>
       <input id="cf-name" name="name" type="text" maxlength="100" autocomplete="name">
 
       <label for="cf-email"><span class="l" lang="de">E-Mail-Adresse</span><span class="l" lang="en">Email address</span></label>
-      <input id="cf-email" name="email" type="email" maxlength="254" autocomplete="email" required>
+      <input id="cf-email" name="email" type="email" maxlength="254" autocomplete="email" required aria-describedby="cf-email-error">
+      <p class="field-error" id="cf-email-error" role="alert" hidden><span class="l" lang="de">Bitte gib eine gültige E-Mail-Adresse an, damit ich antworten kann.</span><span class="l" lang="en">Please enter a valid email address so I can reply.</span></p>
 
-      <label for="cf-message"><span class="l" lang="de">Nachricht</span><span class="l" lang="en">Message</span></label>
-      <textarea id="cf-message" name="message" rows="7" minlength="10" maxlength="5000" required></textarea>
+      <div class="label-row">
+        <label for="cf-message"><span class="l" lang="de">Nachricht</span><span class="l" lang="en">Message</span></label>
+        <span class="counter" aria-hidden="true"></span>
+      </div>
+      <textarea id="cf-message" name="message" rows="7" minlength="10" maxlength="5000" required aria-describedby="cf-message-error"></textarea>
+      <p class="field-error" id="cf-message-error" role="alert" hidden><span class="l" lang="de">Die Nachricht ist zu kurz — schreib bitte ein paar Worte mehr.</span><span class="l" lang="en">The message is too short — please write a few more words.</span></p>
 
       <!-- Für Menschen unsichtbar; wer es ausfüllt, ist ein Bot. -->
       <div class="contact-form__trap" aria-hidden="true">
@@ -86,6 +117,14 @@
 
       <button type="submit"><span class="l" lang="de">Nachricht senden</span><span class="l" lang="en">Send message</span></button>
     </form>
+
+    <section class="contact sent" role="status" hidden>
+      <h2 tabindex="-1"><span class="l" lang="de">Danke, ist angekommen.</span><span class="l" lang="en">Thanks, it’s arrived.</span></h2>
+      <p><span class="l" lang="de">Ich antworte an <strong data-sent-email></strong>, in der Regel innerhalb weniger Werktage.</span><span class="l" lang="en">I’ll reply to <strong data-sent-email></strong>, usually within a few business days.</span></p>
+      <div class="actions">
+        <button type="button" class="button button--secondary" data-new-message><span class="l" lang="de">Neue Nachricht</span><span class="l" lang="en">New message</span></button>
+      </div>
+    </section>
   </div>
 </main>
 
